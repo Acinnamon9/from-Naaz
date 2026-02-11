@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - AI Widget Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            background: #0A0A0A;
+        }
+
+        /* ========================================
+           PRICING SECTION
+        ======================================== */
+        .pricing-section {
+            position: relative;
+            padding: 120px 20px;
+            background: linear-gradient(180deg, #0A0A0A 0%, #121212 100%);
+            overflow: hidden;
+        }
+
+        .pricing-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .pricing-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50px;
+            padding: 12px 32px;
+            margin-bottom: 32px;
+            color: #E8E8E8;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .pricing-title {
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 900;
+            color: #FFFFFF;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .pricing-subtitle {
+            font-size: clamp(18px, 2vw, 24px);
+            color: #C8C8C8;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        /* ========================================
+           PRICING TOGGLE
+        ======================================== */
+        .pricing-toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 0 auto 60px;
+            background: rgba(255, 255, 255, 0.04);
+            width: fit-content;
+            padding: 14px 40px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .toggle-label {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.4);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            letter-spacing: 0.02em;
+            user-select: none;
+        }
+
+        .toggle-label.active {
+            color: #FFFFFF;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .toggle-label.plus-label.active {
+            color: #FFFFFF;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* The Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 62px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 34px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 3px;
+            bottom: 3px;
+            background-color: #FFFFFF;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        input:checked + .slider {
+            background-color: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(28px);
+            background-color: #FFFFFF;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* ========================================
+           LAUNCH BANNER
+        ======================================== */
+        .launch-banner {
+            max-width: 1000px;
+            margin: 0 auto 50px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0%, rgba(30, 30, 30, 0.6) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #FFFFFF;
+            border-radius: 16px;
+            padding: 24px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .launch-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
+            transform: rotate(45deg);
+            pointer-events: none;
+        }
+
+        .launch-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .launch-badge-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 100px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .launch-text {
+            color: #C8C8C8;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .launch-highlight {
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        /* ========================================
+           PRICING CARDS GRID
+        ======================================== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        /* Animation classes */
+        .plan-hidden {
+            display: none !important;
+        }
+
+        .plan-visible {
+            animation: fadeInPlan 0.6s ease forwards;
+        }
+
+        @keyframes fadeInPlan {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========================================
+           PRICING CARD STYLES
+        ======================================== */
+        .pricing-card {
+            border-radius: 32px;
+            padding: 50px 36px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Basic / Standard dark card */
+        .pricing-card.basic-style {
+            background: linear-gradient(135deg, #1A1A1A 0%, #0A0A0A 100%);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .pricing-card.basic-style:hover {
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 32px 72px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Pro / Popular - white card */
+        .pricing-card.pro-style {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%);
+            border-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.pro-style:hover {
+            transform: translateY(-14px) scale(1.02);
+            box-shadow: 0 36px 80px rgba(0, 0, 0, 0.18);
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.pro-style .plan-name { color: #121212; }
+        .pricing-card.pro-style .plan-description { color: #404040; }
+        .pricing-card.pro-style .plan-price { color: #121212; }
+        .pricing-card.pro-style .plan-period { color: #404040; }
+        .pricing-card.pro-style .feature-item { color: #1A1A1A; }
+        .pricing-card.pro-style .feature-check { background: linear-gradient(135deg, #121212 0%, #2A2A2A 100%); }
+        .pricing-card.pro-style .feature-check::after { color: #FFFFFF; }
+        .pricing-card.pro-style .plan-cta {
+            background: linear-gradient(135deg, #121212 0%, #2A2A2A 100%);
+            color: #FFFFFF;
+        }
+        .pricing-card.pro-style .plan-cta:hover {
+            background: linear-gradient(135deg, #000000 0%, #121212 100%);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+        }
+        .pricing-card.pro-style .plan-header { border-bottom-color: rgba(0, 0, 0, 0.1); }
+        .pricing-card.pro-style .credits-info {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+        .pricing-card.pro-style .credit-rate { color: #404040; }
+        .pricing-card.pro-style .credit-rate-highlight { color: #121212; font-weight: 800; }
+        .pricing-card.pro-style .setup-fee-tag { background: rgba(0, 0, 0, 0.06); color: #121212; border-color: rgba(0, 0, 0, 0.1); }
+
+        /* Premium - deep dark card */
+        .pricing-card.premium-style {
+            background: linear-gradient(135deg, #0A0A0A 0%, #000000 100%);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-card.premium-style:hover {
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 32px 72px rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        /* Popular Tag */
+        .popular-tag {
+            position: absolute;
+            top: 24px;
+            right: -42px;
+            background: linear-gradient(135deg, #121212 0%, #2A2A2A 100%);
+            color: #FFFFFF;
+            padding: 8px 50px;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            transform: rotate(45deg);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            text-transform: uppercase;
+            z-index: 5;
+        }
+
+        .pricing-card.pro-style .popular-tag {
+            background: linear-gradient(135deg, #121212 0%, #2A2A2A 100%);
+        }
+
+        /* For dark cards, use white tag */
+        .popular-tag-dark {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 5;
+        }
+
+        /* ========================================
+           CARD INTERNALS
+        ======================================== */
+        .plan-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .plan-name {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #FFFFFF;
+        }
+
+        .plan-description {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            color: #B8B8B8;
+            font-weight: 500;
+        }
+
+        .plan-price {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+            color: #FFFFFF;
+        }
+
+        .plan-currency {
+            font-size: 28px;
+            vertical-align: super;
+            margin-right: 4px;
+        }
+
+        .plan-period {
+            font-size: 17px;
+            color: #B8B8B8;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        /* Setup Fee Display */
+        .setup-fee-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .setup-fee-tag span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Credits Info Box */
+        .credits-info {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .credit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .credit-agents {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .pricing-card.pro-style .credit-agents { color: #121212; }
+
+        .credit-rate {
+            color: #C8C8C8;
+            font-size: 0.85rem;
+            display: block;
+        }
+
+        .credit-rate-highlight {
+            color: #FFFFFF;
+            font-weight: 800;
+        }
+
+        /* Features List */
+        .plan-features {
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        .pricing-card .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #E8E8E8;
+            font-weight: 500;
+        }
+
+        .pricing-card .feature-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #E0E0E0 100%);
+        }
+
+        .pricing-card .feature-check::after {
+            content: '✓';
+            color: #121212;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .feature-item-title {
+            font-weight: 700;
+            color: #FFFFFF;
+            display: block;
+        }
+
+        .pricing-card.pro-style .feature-item-title { color: #121212; }
+
+        .feature-item-desc {
+            display: block;
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.55);
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        .pricing-card.pro-style .feature-item-desc { color: rgba(0, 0, 0, 0.5); }
+
+        /* CTA Button */
+        .plan-cta {
+            display: block;
+            width: 100%;
+            padding: 20px 36px;
+            font-size: 17px;
+            font-weight: 800;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0F0F0 100%);
+            color: #121212;
+            margin-top: auto;
+        }
+
+        .plan-cta:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 100%);
+            box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
+        }
+
+        /* ========================================
+           MOBILE RESPONSIVE
+        ======================================== */
+        @media (max-width: 1100px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-section {
+                padding: 80px 16px;
+            }
+
+            .pricing-header {
+                margin-bottom: 40px;
+            }
+
+            .pricing-toggle-container {
+                padding: 12px 24px;
+                gap: 16px;
+            }
+
+            .toggle-label {
+                font-size: 0.9rem;
+            }
+
+            .pricing-card {
+                padding: 40px 28px;
+                border-radius: 24px;
+            }
+
+            .plan-price {
+                font-size: 44px;
+            }
+
+            .launch-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 24px 20px;
+            }
+
+            .popular-tag {
+                display: none;
+            }
+
+            .popular-tag-dark {
+                top: 14px;
+                right: 14px;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         PRICING SECTION
+    ======================================== -->
+    <section class="pricing-section" id="pricing">
+        <div class="pricing-container">
+
+            <div class="pricing-header">
+                <div class="pricing-badge">Investment</div>
+                <h2 class="pricing-title">Choose Your Plan</h2>
+                <p class="pricing-subtitle">
+                    Scalable solutions for businesses of all sizes
+                </p>
+            </div>
+
+            <!-- LAUNCH BANNER -->
+            <div class="launch-banner">
+                <div class="launch-content">
+                    <div class="launch-badge-tag">🚀 New Launch Offer</div>
+                    <div class="launch-text">Sign up today to lock in these <span class="launch-highlight">exclusive introductory rates</span>.</div>
+                </div>
+            </div>
+
+            <!-- TOGGLE SWITCH -->
+            <div class="pricing-toggle-container">
+                <span class="toggle-label active" id="label-standard" onclick="setPricing(false)">Standard Plans</span>
+                <label class="switch">
+                    <input type="checkbox" id="pricing-toggle-checkbox" onchange="togglePricing()">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label plus-label" id="label-plus" onclick="setPricing(true)">Plus Plans</span>
+            </div>
+
+            <!-- ========================== 
+                 STANDARD PLANS (Default) 
+            =========================== -->
+            <div class="pricing-grid">
+
+                <!-- BASIC $97 -->
+                <div class="pricing-card basic-style plan-standard plan-visible">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Basic</h3>
+                        <p class="plan-description">Best for getting started with AI website assistance.</p>
+                        <div class="plan-price">
+                            <span class="plan-currency">$</span>97
+                        </div>
+                        <div class="plan-period">per month</div>
+                    </div>
+
+                    <div class="credits-info">
+                        <div class="credit-header">
+                            <span class="credit-agents">Up to 3 AI Agents</span>
+                        </div>
+                        <span class="credit-rate"><span class="credit-rate-highlight">$0.25</span> / credit</span>
+                    </div>
+
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">AI Assistant for Your Website</span>
+                                <span class="feature-item-desc">Engages visitors, answers questions, and captures leads automatically.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Basic Conversational Capabilities</span>
+                                <span class="feature-item-desc">Natural, human-like conversations for common visitor queries.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Visitor Interaction Automation</span>
+                                <span class="feature-item-desc">Automatically responds to visitors without manual effort.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Reporting and Analytics</span>
+                                <span class="feature-item-desc">Insights into conversations, visitor activity, and performance.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="plan-cta">Select Basic</a>
+                </div>
+
+                <!-- PRO $297 (Popular) -->
+                <div class="pricing-card pro-style plan-standard plan-visible">
+                    <div class="popular-tag">MOST POPULAR</div>
+                    <div class="plan-header">
+                        <h3 class="plan-name">Pro</h3>
+                        <p class="plan-description">Built for advanced automation and team-based management.</p>
+                        <div class="plan-price">
+                            <span class="plan-currency">$</span>297
+                        </div>
+                        <div class="plan-period">per month</div>
+                    </div>
+
+                    <div class="credits-info">
+                        <div class="credit-header">
+                            <span class="credit-agents">Up to 7 AI Agents</span>
+                        </div>
+                        <span class="credit-rate"><span class="credit-rate-highlight">$0.20</span> / credit</span>
+                    </div>
+
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">AI Assistant for Your Website</span>
+                                <span class="feature-item-desc">Smart AI assistant to engage, qualify, and capture leads.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Basic Conversational Capabilities</span>
+                                <span class="feature-item-desc">Smooth, human-like conversations with visitors.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Visitor Interaction Automation</span>
+                                <span class="feature-item-desc">Automates visitor engagement and qualification.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Reporting and Analytics</span>
+                                <span class="feature-item-desc">Detailed reports on conversations and performance.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Customizable Workflows</span>
+                                <span class="feature-item-desc">Advanced and customized automation flows.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Advanced Analytics</span>
+                                <span class="feature-item-desc">Deeper insights into conversions and performance trends.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">CRM Integration</span>
+                                <span class="feature-item-desc">Sync leads and conversations directly with your CRM.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="plan-cta">Select Pro</a>
+                </div>
+
+                <!-- PREMIUM $497 -->
+                <div class="pricing-card premium-style plan-standard plan-visible">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Premium</h3>
+                        <p class="plan-description">Full AI automation with enterprise-level support and integrations.</p>
+                        <div class="plan-price">
+                            <span class="plan-currency">$</span>497
+                        </div>
+                        <div class="plan-period">per month</div>
+                    </div>
+
+                    <div class="credits-info">
+                        <div class="credit-header">
+                            <span class="credit-agents">Up to 10 AI Agents</span>
+                        </div>
+                        <span class="credit-rate"><span class="credit-rate-highlight">$0.15</span> / credit</span>
+                    </div>
+
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Everything in Pro</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Priority Support</span>
+                                <span class="feature-item-desc">Faster and prioritized customer support.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Dedicated Account Manager</span>
+                                <span class="feature-item-desc">Personal manager to help optimize and scale usage.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Visitor Segmentation</span>
+                                <span class="feature-item-desc">Auto-segment visitors based on behavior and intent.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Third-Party Tool Integration</span>
+                                <span class="feature-item-desc">Connect with external tools to extend platform capabilities.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="plan-cta">Select Premium</a>
+                </div>
+
+                <!-- ========================== 
+                     PLUS PLANS (Hidden by Default)
+                =========================== -->
+
+                <!-- BASIC+ $167 -->
+                <div class="pricing-card basic-style plan-plus plan-hidden">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Basic +</h3>
+                        <p class="plan-description">Best for getting started with AI website assistance.</p>
+                        <div class="plan-price">
+                            <span class="plan-currency">$</span>167
+                        </div>
+                        <div class="plan-period">per month</div>
+                        <div class="setup-fee-tag">
+                            + $149 <span>One-Time Setup Fee</span>
+                        </div>
+                    </div>
+
+                    <div class="credits-info">
+                        <div class="credit-header">
+                            <span class="credit-agents">Up to 3 AI Agents</span>
+                        </div>
+                        <span class="credit-rate"><span class="credit-rate-highlight">$0.25</span> / credit</span>
+                    </div>
+
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">AI Assistant for Your Website</span>
+                                <span class="feature-item-desc">Engages visitors, answers questions, and captures leads automatically.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Basic Conversational Capabilities</span>
+                                <span class="feature-item-desc">Natural, human-like conversations for common visitor queries.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Visitor Interaction Automation</span>
+                                <span class="feature-item-desc">Automatically responds to visitors without manual effort.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Reporting and Analytics</span>
+                                <span class="feature-item-desc">Insights into conversations, visitor activity, and performance.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="plan-cta">Select Basic +</a>
+                </div>
+
+                <!-- PRO+ $327 (Popular) -->
+                <div class="pricing-card pro-style plan-plus plan-hidden">
+                    <div class="popular-tag">MOST POPULAR</div>
+                    <div class="plan-header">
+                        <h3 class="plan-name">Pro +</h3>
+                        <p class="plan-description">Built for advanced automation and team-based management.</p>
+                        <div class="plan-price">
+                            <span class="plan-currency">$</span>327
+                        </div>
+                        <div class="plan-period">per month</div>
+                        <div class="setup-fee-tag">
+                            + $349 <span>One-Time Setup Fee</span>
+                        </div>
+                    </div>
+
+                    <div class="credits-info">
+                        <div class="credit-header">
+                            <span class="credit-agents">Up to 7 AI Agents</span>
+                        </div>
+                        <span class="credit-rate"><span class="credit-rate-highlight">$0.20</span> / credit</span>
+                    </div>
+
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">AI Assistant for Your Website</span>
+                                <span class="feature-item-desc">Smart AI assistant to engage, qualify, and capture leads.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Basic Conversational Capabilities</span>
+                                <span class="feature-item-desc">Smooth, human-like conversations with visitors.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Visitor Interaction Automation</span>
+                                <span class="feature-item-desc">Automates visitor engagement and qualification.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Reporting and Analytics</span>
+                                <span class="feature-item-desc">Detailed reports on conversations and performance.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Customizable Workflows</span>
+                                <span class="feature-item-desc">Advanced and customized automation flows.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Advanced Analytics</span>
+                                <span class="feature-item-desc">Deeper insights into conversions and performance trends.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">CRM Integration</span>
+                                <span class="feature-item-desc">Sync leads and conversations directly with your CRM.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="plan-cta">Select Pro +</a>
+                </div>
+
+                <!-- PREMIUM+ $507 -->
+                <div class="pricing-card premium-style plan-plus plan-hidden">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Premium +</h3>
+                        <p class="plan-description">Full AI automation with enterprise-level support and integrations.</p>
+                        <div class="plan-price">
+                            <span class="plan-currency">$</span>507
+                        </div>
+                        <div class="plan-period">per month</div>
+                        <div class="setup-fee-tag">
+                            + $999 <span>One-Time Setup Fee</span>
+                        </div>
+                    </div>
+
+                    <div class="credits-info">
+                        <div class="credit-header">
+                            <span class="credit-agents">Up to 10 AI Agents</span>
+                        </div>
+                        <span class="credit-rate"><span class="credit-rate-highlight">$0.15</span> / credit</span>
+                    </div>
+
+                    <div class="plan-features">
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Everything in Pro +</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Priority Support</span>
+                                <span class="feature-item-desc">Faster and prioritized customer support.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Dedicated Account Manager</span>
+                                <span class="feature-item-desc">Personal manager to help optimize and scale usage.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Visitor Segmentation</span>
+                                <span class="feature-item-desc">Auto-segment visitors based on behavior and intent.</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"></div>
+                            <div>
+                                <span class="feature-item-title">Third-Party Tool Integration</span>
+                                <span class="feature-item-desc">Connect with external tools to extend platform capabilities.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="plan-cta">Select Premium +</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ==========================================
+        // PRICING TOGGLE LOGIC
+        // ==========================================
+        function togglePricing() {
+            const checkbox = document.getElementById('pricing-toggle-checkbox');
+            setPricing(checkbox.checked);
+        }
+
+        function setPricing(isPlus) {
+            const checkbox = document.getElementById('pricing-toggle-checkbox');
+            checkbox.checked = isPlus;
+
+            const standardPlans = document.querySelectorAll('.plan-standard');
+            const plusPlans = document.querySelectorAll('.plan-plus');
+            const labelStandard = document.getElementById('label-standard');
+            const labelPlus = document.getElementById('label-plus');
+
+            if (isPlus) {
+                labelStandard.classList.remove('active');
+                labelPlus.classList.add('active');
+
+                standardPlans.forEach(el => {
+                    el.classList.remove('plan-visible');
+                    el.classList.add('plan-hidden');
+                });
+
+                plusPlans.forEach(el => {
+                    el.classList.remove('plan-hidden');
+                    setTimeout(() => el.classList.add('plan-visible'), 10);
+                });
+
+            } else {
+                labelPlus.classList.remove('active');
+                labelStandard.classList.add('active');
+
+                plusPlans.forEach(el => {
+                    el.classList.remove('plan-visible');
+                    el.classList.add('plan-hidden');
+                });
+
+                standardPlans.forEach(el => {
+                    el.classList.remove('plan-hidden');
+                    setTimeout(() => el.classList.add('plan-visible'), 10);
+                });
+            }
+        }
+    </script>
+
+</body>
+</html>
